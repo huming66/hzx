@@ -11,6 +11,10 @@ summary {
     background-color: lightgray;
     border-bottom: 1px solid darkgrey
 }
+summary a {
+    font-weight: normal;
+    font-size:70%;
+}
 details {
     font-size: 28px;
     border: 1px dotted grey;
