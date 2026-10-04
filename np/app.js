@@ -278,7 +278,7 @@ var GY_ON=true,yRaf=0;try{GY_ON=localStorage.getItem('tl3dStand')!=='0'}catch(_)
 function sstep(a,b,x){var k=Math.max(0,Math.min(1,(x-a)/(b-a)));return k*k*(3-2*k)}
 var Y3L=(function(){var N=4,h='';for(var i=N-1;i>=0;i--){var f=1-i/(N-1),c=[Math.round(110+(214-110)*f),Math.round(74+(160-74)*f),Math.round(18+(60-18)*f)];
   h+='<span class="'+(i===0?'f':'')+'" style="'+(i===0?'':'color:rgb('+c.join(',')+');')+'transform:translateZ('+(-i*1.6)+'px)">@</span>'}return h})();
-var world=$('#world'),v3d=$('#v3d'),Z=460,OFF=260,raf3=0,FAR3=460*14,FARY3=460*16,DEF3={p:18,y:-30,k:1.4,d:1},K3=DEF3.k,DEN3=DEF3.d;
+var world=$('#world'),v3d=$('#v3d'),Z=460,OFF=260,raf3=0,FAR3=460*32,FARY3=460*16,DEF3={p:18,y:-30,k:2.1,d:1.6},K3=DEF3.k,DEN3=DEF3.d;
 try{var sk=parseFloat(localStorage.getItem('tl3dCardSize'));if(sk>=0.6&&sk<=1.8)K3=sk}catch(_){}
 function setK3(v){K3=v;$('#k3').value=v;$('#k3v').textContent=Math.round(v*100)+'%';try{localStorage.setItem('tl3dCardSize',v)}catch(_){}render3D()}
 var VW={p:DEF3.p,y:DEF3.y};try{var vv=JSON.parse(localStorage.getItem('tl3dView')||'{}');if(typeof vv.p==='number')VW.p=vv.p;if(typeof vv.y==='number')VW.y=vv.y}catch(_){}
