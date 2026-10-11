@@ -1338,7 +1338,7 @@ var DATA = {
       startDate: "1940-01-01 00:00:00",
       endDate: "1940-12-31 00:00:00",
       category: "1106080",
-      text: "曾住遵义老城杨柳街8号 ",
+      text: "其间曾住遵义老城杨柳街8号 ",
       fullText: "",
       externalLink: "",
       media: [
