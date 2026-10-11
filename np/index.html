@@ -36,7 +36,12 @@ a{color:var(--red)}
 .chip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
 .chip .n{color:var(--txt2)}
 .chip.off{opacity:.35}
-#count{color:var(--txt2);margin-left:auto}
+#count{color:var(--txt2)}
+#sortbox{margin-left:auto;display:inline-flex;align-items:center;gap:4px;color:var(--txt2);flex:none}
+#sortbox select{background:#0e0c09;color:var(--txt);border:1px solid var(--line2);border-radius:5px;padding:1px 4px;font-size:12px}
+#sortbox button{border:1px solid var(--line2);background:none;color:var(--txt);border-radius:5px;padding:0 7px;font-size:12px}
+.y3.gt span{font-size:96px;line-height:160px;letter-spacing:.02em}
+.sortnt #mini{display:none}
 .fh{--fh:38px}
 
 /* ---------- timeline stage ---------- */
@@ -116,6 +121,33 @@ a{color:var(--red)}
 #v3d{position:fixed;left:0;right:0;top:calc(var(--hdr) + 38px);bottom:var(--mini);overflow:hidden;display:none;cursor:grab;touch-action:none;
   background:radial-gradient(ellipse at 50% 38%,#3a2f1f 0%,#16120c 55%,#090806 100%)}
 #v3d.drag{cursor:grabbing}
+#world.helix .fl{width:calc(var(--R)*2);height:calc(var(--R)*1.64);margin-left:calc(var(--R)*-1);margin-top:calc(var(--R)*-.82);border-radius:50%;background:none;border:2px solid rgba(216,178,106,.35);box-shadow:0 0 30px rgba(216,178,106,.12) inset}
+#world .sg3{position:absolute;left:0;top:0;height:7px;margin-top:-3.5px;pointer-events:none;background:var(--c);border-radius:4px;box-shadow:0 0 16px var(--c)}
+#world .ln3{position:absolute;left:0;top:0;width:8px;margin-left:-4px;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,var(--c) 30%,var(--c) 92%,transparent 100%);opacity:.55;box-shadow:0 0 18px var(--c)}
+#world .lb3{position:absolute;left:0;top:0;width:420px;margin-left:-210px;margin-top:-34px;text-align:center;font:700 58px/68px var(--serif);color:var(--c);opacity:.9;pointer-events:none;letter-spacing:.1em;text-shadow:0 0 12px rgba(0,0,0,.6)}
+#bg3{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#bg3 .sky{position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 38% at 62% 46%,var(--glow),transparent 70%),
+  linear-gradient(180deg,var(--s0) 0%,var(--s1) 22%,var(--s2) 44%,var(--s3) 58%,var(--s4) 78%,var(--s5) 100%)}
+#bg3 svg path{transition:fill .6s}
+#bg3 .moon{position:absolute;left:24%;top:9%;width:7vmin;height:7vmin;border-radius:50%;
+  background:radial-gradient(circle at 42% 40%,var(--mo0),var(--mo1) 60%,var(--mo2));opacity:.55;box-shadow:0 0 60px 18px var(--moglow)}
+#bg3 svg{position:absolute;left:-20%;width:140%;will-change:transform}
+#bg3 .m1{top:22%;bottom:0;height:auto;opacity:.5;filter:blur(1.8px)}
+#bg3 .m2{top:30%;bottom:0;height:auto;opacity:.78;filter:blur(.7px)}
+#bg3 .m3{top:40%;bottom:0;height:auto}
+#bg3 .mist{position:absolute;left:-30%;width:160%;height:18%;border-radius:50%;
+  background:radial-gradient(ellipse at center,var(--mist),transparent 65%);animation:mistdrift 70s linear infinite alternate}
+#bg3 .mist.a{top:44%}#bg3 .mist.b{top:56%;animation-duration:95s;animation-direction:alternate-reverse;opacity:.8}
+@keyframes mistdrift{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+#bg3 .grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#bg3 .photo{position:absolute;inset:-4%;background-size:cover;background-position:center;filter:sepia(.5) brightness(.42) blur(2px);opacity:0;transition:opacity .6s}
+#bg3 .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,6,4,.75) 100%)}
+#bg3[data-m="plain"] > :not(.shade){display:none}
+#bg3[data-m="photo"] > :not(.photo):not(.shade):not(.grain){display:none}
+#bg3[data-m="photo"] .photo{opacity:1}
+
 #cam{position:absolute;inset:0;perspective:1000px;perspective-origin:50% 30%}
 #world{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
 .c3{position:absolute;width:250px;margin-left:-125px;margin-top:-110px;background:var(--paper);color:var(--ink);border-radius:8px;padding:12px 14px;
@@ -123,6 +155,9 @@ a{color:var(--red)}
 .c3 .d{font-size:12px;color:var(--mut)}.c3 .t{font:700 17px/1.4 var(--serif);margin:2px 0 6px}
 .c3 img{width:100%;height:120px;object-fit:cover;border-radius:4px;display:block;margin-bottom:8px;background:#ddd}
 .c3 .k{display:inline-block;font-size:11px;color:#fff;background:var(--c);padding:0 7px;border-radius:3px}
+.c3.cur{box-shadow:0 0 0 3px #f5d27a,0 0 34px 8px rgba(245,200,100,.55),0 18px 40px rgba(0,0,0,.55);animation:curpulse 2.4s ease-in-out infinite}
+.c3.cur .t{color:#7a2a0e}
+@keyframes curpulse{50%{box-shadow:0 0 0 3px #f5d27a,0 0 50px 14px rgba(245,200,100,.75),0 18px 40px rgba(0,0,0,.55)}}
 .c3.sel{box-shadow:0 0 0 3px var(--gold),0 18px 40px rgba(0,0,0,.55)}
 .y3{position:absolute;left:0;top:0;width:480px;height:160px;margin-left:-240px;transform-style:preserve-3d;transform-origin:50% 100%;pointer-events:none}
 .y3 span{position:absolute;left:0;right:0;top:0;text-align:center;font:900 150px/160px var(--serif);letter-spacing:.05em;white-space:nowrap}
@@ -142,14 +177,15 @@ a{color:var(--red)}
 #set3 .opts button{flex:1;border:1px solid var(--line2);background:none;border-radius:6px;padding:4px 6px;font-size:12px;color:var(--txt2);white-space:nowrap}
 #set3 .opts button.on{background:var(--gold);color:#1a140b;border-color:var(--gold);font-weight:600}
 #set3 .v{float:right;color:var(--gold)}
-#ps3{position:absolute;left:16px;top:12px;bottom:62px;right:calc(min(480px,38%) + 32px);z-index:3;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;opacity:0;transition:opacity .5s}
+#ps3{position:absolute;left:16px;top:56px;bottom:62px;right:calc(min(480px,38%) + 32px);z-index:3;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;opacity:0;transition:opacity .5s}
 #ps3.on{opacity:1}
 #help3{transition:opacity .4s}#v3d.pson #help3{opacity:0}
 #ps3 .fr{position:relative;flex:1;min-height:0;width:100%}
-#ps3 img{position:absolute;top:0;left:0;max-width:100%;max-height:100%;background:#f3ecdf;padding:7px;border-radius:3px;box-shadow:0 16px 44px rgba(0,0,0,.7);opacity:0;transition:opacity .8s;pointer-events:auto;cursor:zoom-in}
+#ps3 img{position:absolute;top:0;left:0;max-width:100%;max-height:100%;background:#f3ecdf;padding:7px;border-radius:3px;box-shadow:0 16px 44px rgba(0,0,0,.7);opacity:0;transition:opacity .8s;pointer-events:none;cursor:zoom-in}
 #ps3 img{transform-origin:0 50%;transition:opacity .9s ease,transform 1.3s cubic-bezier(.3,.1,.3,1)}
 #ps3 img.on{opacity:1;z-index:1}
-#ps3 img.out{opacity:0;z-index:2;transform:translateX(72vw) scale(1.3);transition:opacity 3s cubic-bezier(.55,0,.85,.4),transform 3s cubic-bezier(.45,0,.55,1);pointer-events:none}
+#ps3.on img.on{pointer-events:auto}
+#ps3 img.out{opacity:0;z-index:2;transform:translateX(72vw) scale(2);transition:opacity 3s cubic-bezier(.55,0,.85,.4),transform 3s cubic-bezier(.45,0,.55,1);pointer-events:none}
 #ps3 .pc{margin-top:8px;font-size:14px;color:#efe6d4;text-shadow:0 1px 4px #000;min-height:1.2em;max-width:100%}
 #ps3 .pc b{color:var(--gold);font-weight:600;margin-left:8px}
 #cap3{position:absolute;right:16px;bottom:62px;transform:translateY(16px);width:min(480px,38%);max-height:calc(100% - 62px - 170px);display:flex;flex-direction:column;
@@ -169,14 +205,23 @@ a{color:var(--red)}
 #cap3 .pg{height:3px;background:rgba(0,0,0,.08);flex:none;border-radius:0 0 10px 10px;overflow:hidden}
 #cap3 .pg i{display:block;height:100%;width:0;background:var(--c)}
 #cap3 .more{position:absolute;right:10px;top:8px;font-size:12px;border:1px solid #d2c5ad;background:#fff;border-radius:5px;padding:1px 8px;color:var(--ink)}
-#size3{position:absolute;right:14px;top:12px;z-index:2;display:grid;grid-template-columns:auto 120px 52px;align-items:center;gap:4px 8px;font-size:12.5px;color:var(--txt2);background:rgba(0,0,0,.45);border:1px solid var(--line2);border-radius:8px;padding:5px 10px}
+#size3{position:absolute;left:12px;top:8px;z-index:2;max-height:calc(100% - 90px);overflow-y:auto;scrollbar-width:thin;display:grid;grid-template-columns:auto 120px 52px;align-items:center;gap:4px 8px;font-size:12.5px;color:var(--txt2);background:rgba(14,12,9,.86);backdrop-filter:blur(4px);border:1px solid var(--line2);border-radius:8px;padding:5px 10px;z-index:6}
 #size3 input{width:120px;accent-color:#d8b26a}#size3 b{color:var(--txt);font-weight:600;min-width:38px;text-align:right}
+#size3 .bgopts button{flex:1;border:1px solid var(--line2);background:none;color:var(--txt2);border-radius:5px;padding:1px 4px;font-size:11.5px;white-space:nowrap}
+#size3 .bgopts button.on{background:var(--gold);color:#1a140b;border-color:var(--gold);font-weight:600}
+#size3:not(.ov) .ovrow{display:none}
+#world .sp3{position:absolute;left:0;top:0;height:10px;margin-top:-5px;pointer-events:none;border-radius:5px;background:linear-gradient(90deg,#b8862e,#f5d27a,#b8862e);box-shadow:0 0 18px rgba(245,200,100,.6)}
+#world .c3.ovc{transition:none}
 #size3 .rs{grid-column:1/4;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:2px;font-size:11.5px}
 #size3 .rs button{border:1px solid var(--line2);background:none;color:var(--txt);border-radius:5px;padding:1px 10px;font-size:12px}
 #size3 .rs button:hover{border-color:var(--gold)}
-#size3.min>*:not(.rs){display:none}
+#size3.min{padding:0;background:none;border:0;display:block}
+#size3.min>*:not(#v3gear){display:none!important}
+#v3gear{display:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(0,0,0,.5);color:var(--txt);font-size:20px;line-height:36px;text-align:center;cursor:pointer}
+#v3gear:hover{border-color:var(--gold);color:var(--gold)}
+#size3.min #v3gear{display:block}
 #v3d.orbit{cursor:move}
-#help3{position:absolute;left:14px;top:14px;max-width:calc(100% - 330px);font-size:12px;color:var(--txt2);z-index:2}
+#help3{position:absolute;left:60px;top:18px;max-width:calc(100% - 80px);font-size:12px;color:var(--txt2);z-index:2}
 
 /* ---------- intro / lightbox ---------- */
 #intro{position:fixed;inset:0;z-index:50;background:rgba(8,7,5,.82);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}
@@ -221,7 +266,7 @@ a{color:var(--red)}
   <div class="seg" id="views"><button data-v="tl" class="on">时间轴</button><button data-v="3d">3D</button><button data-v="list">列表</button></div>
   <button class="ib zoomb" id="zo" title="缩小">－</button><button class="ib zoomb" id="zi" title="放大">＋</button>
 </header>
-<div id="filters"><span id="chips" style="display:contents"></span><span id="count"></span></div>
+<div id="filters"><span id="chips" style="display:contents"></span><span id="sortbox">排序 <select id="sortsel"></select><button id="sortdir" title="升序 / 降序">↑</button></span><span id="count"></span></div>
 
 <div id="stage">
   <div id="ruler"><div id="ticks"></div><div id="era"></div></div>
@@ -229,11 +274,12 @@ a{color:var(--red)}
   <div id="scroller"><div id="lanes"></div></div>
 </div>
 <div id="v3d">
+  <div id="bg3" data-m="ink"><div class="sky"></div><div class="moon"></div><svg class="m1" viewBox="0 0 2400 400" preserveAspectRatio="none"><path fill="#4a3d2b"/></svg><svg class="m2" viewBox="0 0 2400 400" preserveAspectRatio="none"><path fill="#2f271c"/></svg><div class="mist a"></div><svg class="m3" viewBox="0 0 2400 400" preserveAspectRatio="none"><path fill="#1a150f"/></svg><div class="mist b"></div><div class="photo"></div><div class="grain"></div><div class="shade"></div></div>
   <div id="cam"><div id="world"></div></div>
   <div id="ps3"><div class="fr"><img alt=""><img alt=""><img alt=""><img alt=""></div><div class="pc"></div></div>
   <div id="cap3"><button class="more" id="cap3more">展开详情</button><div class="cb" id="cap3b"></div><div class="pg"><i id="cap3pg"></i></div></div>
-  <div id="hud"><button class="ib" id="b3prev">◀ 上一条</button><span id="yr3"></span><button class="ib" id="b3play">▶ 自动漫游</button><span id="set3b"><button class="ib" id="b3set" title="漫游设置">⚙</button><div id="set3"><div class="row"><h4>漫游速度 <span class="v" id="spdv"></span></h4><input id="spd" type="range" min="0.5" max="3" step="0.25"></div><div class="row"><h4>每条停留</h4><div class="opts" id="dwm"><button data-m="auto">按字数自动</button><button data-m="fixed">固定时间</button></div><div id="dwfx" style="margin-top:6px"><span class="v" id="dwv"></span><input id="dws" type="range" min="2" max="60" step="1"></div></div><div class="row"><h4>显示内容</h4><div class="opts" id="shm"><button data-m="none">不显示</button><button data-m="cap">字幕卡片</button><button data-m="panel">详情面板</button></div></div><div class="row"><h4>照片轮播</h4><div class="opts" id="psm"><button data-m="0">关闭</button><button data-m="1">自动轮播一轮</button></div><div id="psx" style="margin-top:6px"><span class="v" id="psv"></span><input id="pss" type="range" min="2" max="12" step="1"></div></div><div class="row" id="ttsrow"><h4>语音朗读</h4><div class="opts" id="ttm"><button data-m="0">关闭</button><button data-m="1">自动朗读</button></div><div id="ttsx" style="margin-top:8px"><select id="ttv" style="width:100%;background:#0e0c09;color:var(--txt);border:1px solid var(--line2);border-radius:6px;padding:4px;font-size:12px"></select><h4 style="margin-top:8px">朗读语速 <span class="v" id="ttrv"></span></h4><input id="ttr" type="range" min="0.6" max="1.8" step="0.1"></div><div id="ttsna" style="display:none;font-size:12px;color:var(--txt2)">此浏览器不支持语音朗读</div><div class="opts" style="margin-top:8px"><button id="loopbtn">🔁 循环朗读前言</button></div></div></div></span><button class="ib" id="b3next">下一条 ▶</button></div>
-  <div id="size3"><span>卡片大小</span><input id="k3" type="range" min="0.6" max="3.0" step="0.05" value="1"><b id="k3v">100%</b><span>卡片密度</span><input id="den3" type="range" min="0.5" max="2.5" step="0.1" value="1"><b id="den3v">100%</b><span>上下视角</span><input id="pitch3" type="range" min="-20" max="50" step="1" value="0"><b id="pitch3v">0°</b><span>左右视角</span><input id="yaw3" type="range" min="-50" max="50" step="1" value="0"><b id="yaw3v">0°</b><span>地面年份</span><label style="display:flex;align-items:center;gap:6px;grid-column:2/4"><input id="gold3" type="checkbox" style="width:auto"> 近处原地立起（金色）</label><div class="rs"><span style="color:var(--txt2)">右键或 Shift+拖动 旋转视角</span><span><button id="vreset">复位</button> <button id="vmin" title="收起">－</button></span></div></div>
+  <div id="hud"><button class="ib" id="b3prev">◀ 上一条</button><span id="yr3"></span><button class="ib" id="b3play">▶ 自动漫游</button><span id="set3b"><button class="ib" id="b3set" title="漫游设置">⚙</button><div id="set3"><div class="row"><h4>漫游速度 <span class="v" id="spdv"></span></h4><input id="spd" type="range" min="0.5" max="3" step="0.25"></div><div class="row"><h4>每条停留</h4><div class="opts" id="dwm"><button data-m="auto">按字数自动</button><button data-m="fixed">固定时间</button></div><div id="dwfx" style="margin-top:6px"><span class="v" id="dwv"></span><input id="dws" type="range" min="2" max="60" step="1"></div></div><div class="row"><h4>显示内容</h4><div class="opts" id="shm"><button data-m="none">不显示</button><button data-m="cap">字幕卡片</button><button data-m="panel">详情面板</button></div></div><div class="row"><h4>照片轮播</h4><div class="opts" id="psm"><button data-m="0">关闭</button><button data-m="1">自动轮播一轮</button></div><div id="psx" style="margin-top:6px"><span class="v" id="psv"></span><input id="pss" type="range" min="2" max="12" step="1"></div></div><div class="row" id="ttsrow"><h4>语音朗读</h4><div class="opts" id="ttm"><button data-m="0">关闭</button><button data-m="1">自动朗读</button></div><div id="ttsx" style="margin-top:8px"><div class="opts" id="ttsc" style="margin-bottom:8px"><button data-m="text">只读摘要</button><button data-m="all">朗读全部文字</button></div><select id="ttv" style="width:100%;background:#0e0c09;color:var(--txt);border:1px solid var(--line2);border-radius:6px;padding:4px;font-size:12px"></select><h4 style="margin-top:8px">朗读语速 <span class="v" id="ttrv"></span></h4><input id="ttr" type="range" min="0.6" max="1.8" step="0.1"></div><div id="ttsna" style="display:none;font-size:12px;color:var(--txt2)">此浏览器不支持语音朗读</div><div class="opts" style="margin-top:8px"><button id="loopbtn">🔁 循环朗读前言</button></div></div></div></span><button class="ib" id="b3next">下一条 ▶</button></div>
+  <div id="size3" class="min"><button id="v3gear" title="3D 视图设置">⚙</button><span>卡片大小</span><input id="k3" type="range" min="0.8" max="3.0" step="0.05" value="1"><b id="k3v">100%</b><span>卡片密度</span><input id="den3" type="range" min="0.5" max="2.5" step="0.1" value="1"><b id="den3v">100%</b><span>上下视角</span><input id="pitch3" type="range" min="-20" max="50" step="1" value="0"><b id="pitch3v">0°</b><span>左右视角</span><input id="yaw3" type="range" min="-50" max="50" step="1" value="0"><b id="yaw3v">0°</b><span>远方左右</span><input id="vpx3" type="range" min="10" max="90" step="1" value="50"><b id="vpx3v">中</b><span>远方高低</span><input id="vpy3" type="range" min="0" max="70" step="1" value="30"><b id="vpy3v">30%</b><span>走廊宽度</span><input id="cw3" type="range" min="0.5" max="2.5" step="0.05" value="1"><b id="cw3v">100%</b><span>两侧张角</span><input id="fl3" type="range" min="-0.8" max="1.5" step="0.05" value="0"><b id="fl3v">平行</b><span>透视纵深</span><input id="pz3" type="range" min="400" max="2600" step="50" value="1000"><b id="pz3v">1000</b><span>排列</span><div class="bgopts" id="laym" style="grid-column:2/4;display:flex;gap:4px"><button data-m="side">左右交替</button><button data-m="lanes">分类多线</button><button data-m="single">单列</button><button data-m="ov">全景</button></div><span class="ovrow">龙形</span><select id="ovshape" class="ovrow" style="grid-column:2/4;background:#0e0c09;color:var(--txt);border:1px solid var(--line2);border-radius:5px;padding:2px 4px;font-size:12px"><option value="line">直线</option><option value="ellipse">椭圆</option><option value="arc">圆弧</option><option value="s">S 形</option><option value="spiral">螺旋</option></select><span>轨迹</span><select id="path3" style="grid-column:2/4;background:#0e0c09;color:var(--txt);border:1px solid var(--line2);border-radius:5px;padding:2px 4px;font-size:12px"><option value="straight">直线</option><option value="wind">蜿蜒山路</option><option value="helix">时光隧道（螺旋）</option><option value="stairs">拾级而上</option><option value="life">人生起伏</option></select><span>背景</span><div class="bgopts" id="bgm" style="grid-column:2/4;display:flex;gap:4px"><button data-m="ink">水墨山水</button><button data-m="photo">封面照片</button><button data-m="plain">纯色</button></div><span>色调</span><div class="bgopts" id="tonem" style="grid-column:2/4;display:flex;gap:4px"><button data-m="ink">墨色</button><button data-m="dusk">暮色</button><button data-m="green">青山</button><button data-m="night">月夜</button></div><span>地面年份</span><label style="display:flex;align-items:center;gap:6px;grid-column:2/4"><input id="gold3" type="checkbox" style="width:auto"> 近处原地立起（金色）</label><div class="rs"><span style="color:var(--txt2)">右键或 Shift+拖动 旋转视角</span><span><button id="vreset">复位</button> <button id="vmin" title="收起">收起 ✕</button></span></div></div>
   <div id="help3">空格：自动漫游　·　滚轮 / 拖动 / ↑↓ 键：穿越时间　·　[ ] 键：卡片大小　·　- = 键：卡片密度　·　Shift+方向键：视角　·　0：恢复默认视角　·　点击卡片：查看详情</div>
 </div>
 <div id="list"><div class="wrap" id="lwrap"></div></div>
