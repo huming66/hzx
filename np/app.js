@@ -299,7 +299,7 @@ var GY_ON=true,yRaf=0;try{GY_ON=localStorage.getItem('tl3dStand')!=='0'}catch(_)
 function sstep(a,b,x){var k=Math.max(0,Math.min(1,(x-a)/(b-a)));return k*k*(3-2*k)}
 var Y3L=(function(){var N=4,h='';for(var i=N-1;i>=0;i--){var f=1-i/(N-1),c=[Math.round(110+(214-110)*f),Math.round(74+(160-74)*f),Math.round(18+(60-18)*f)];
   h+='<span class="'+(i===0?'f':'')+'" style="'+(i===0?'':'color:rgb('+c.join(',')+');')+'transform:translateZ('+(-i*1.6)+'px)">@</span>'}return h})();
-var curHL=null,lanes3=[],LBZ=110,LAY3='side';try{LAY3=localStorage.getItem('tl3dLayout')||'side'}catch(_){}
+var curHL=null,lanes3=[],LBZ=110,LAY3='side';try{LAY3=localStorage.getItem('tl3dLayout')||'lanes'}catch(_){}
 var world=$('#world'),v3d=$('#v3d'),Z=460,OFF=260,raf3=0,FAR3=460*32,FARY3=460*16,DEF3={p:18,y:-30,k:2.1,d:1.6,vx:50,vy:30,cw:1,fl:0,pz:1000},K3=DEF3.k,DEN3=DEF3.d;
 try{var sk=parseFloat(localStorage.getItem('tl3dCardSize'));if(sk>=0.6&&sk<=3)K3=sk}catch(_){}
 function setK3(v){K3=v;$('#k3').value=v;$('#k3v').textContent=Math.round(v*100)+'%';try{localStorage.setItem('tl3dCardSize',v)}catch(_){}render3D()}
