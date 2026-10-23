@@ -714,7 +714,7 @@ var DATA = {
       startDate: "1917-08-16 00:00:00",
       endDate: "1917-08-16 00:00:00",
       category: "1105773",
-      text: "1917年8月16日，解运军械弹药，率领部队到达贡井",
+      text: "1917年8月16日，解运军械弹药，率领部队到达四川贡井",
       fullText: "",
       externalLink: "",
       media: [
